@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>View Edit</title>
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/bien.css" />
+        <link rel="stylesheet" href="./assets/css/base.css" />
+        <link rel="stylesheet" href="./assets/css/main.css" />
+    </head>
+    <body class="home">
+        <header id="header"></header>
+        <div class="container" style="height: 100%; width: 100%;">
+            <div class="form-edit" style="margin: auto;">
+                <div>
+                    <label>Title</label>
+                    <input type="text" id="title" disabled />
+                </div>
+                <div>
+                    <label>Author</label>
+                    <input type="text" id="author" disabled />
+                </div>
+                <div>
+                    <label>Mô tả về sách</label>
+                    <input type="text" id="description" disabled />
+                </div>
+                <div>
+                    <label>ngày phát hành</label>
+                    <input type="text" id="date" disabled />
+                </div>
+                <div>
+                    <label>Số trang</label>
+                    <input type="text" id="numpage" disabled />
+                </div>
+                <div>
+                    <label>Category</label>
+                    <input type="text" id="category" disabled />
+                </div>
+                <div>
+                    <input type="file" accept="image/*" id="img" disabled />
+                    <img id="imgpreview" src="#" alt="Image preview" />
+                </div>
+                <div>
+                    <button id="edit-button">Sửa</button>
+                    <button id="save-button" style="display: none">Lưu</button>
+                </div>
+                <select id="book-category" name="book-category">
+                    <option value="">-- Chọn thể loại --</option>
+                    <option value="Học tập">Học tập</option>
+                    <option value="Giải trí">Giải trí</option>
+                    <option value="Kinh tế">Kinh tế</option>
+                    <option value="Văn học">Văn học</option>
+                    <option value="add-new">Thêm thể loại khác</option>
+                </select>
+            </div>
+        </div>
+    </body>
+    <script src="./assets/view.js"></script>
+    <script>
+        function enableEditMode() {
+            title.disabled = false;
+            author.disabled = false;
+            description.disabled = false;
+            date.disabled = false;
+            numpage.disabled = false;
+            category.disabled = false;
+            img.disabled = false;
+            editButton.style.display = "none";
+            saveButton.style.display = "block";
+        }
+
+        // Hàm để lưu thông tin chỉnh sửa
+        function saveChanges() {
+            title.disabled = true;
+            author.disabled = true;
+            description.disabled = true;
+            date.disabled = true;
+            numpage.disabled = true;
+            category.disabled = true;
+            img.disabled = true;
+            editButton.style.display = "block";
+            saveButton.style.display = "none";
+        }
+
+        // Sự kiện click nút Sửa
+        editButton.addEventListener("click", enableEditMode);
+
+        // Sự kiện click nút Lưu
+        saveButton.addEventListener("click", saveChanges);
+    </script>
+</html>

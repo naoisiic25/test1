@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>đăng nhập</title>
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="./assets/css/log.css" />
+        <!-- <link rel="stylesheet" href="./assets/css/base.css"> -->
+        <link rel="stylesheet" href="./assets/validator.js" />
+
+    </head>
+    <body>
+        <div class="main">
+            <form action="" method="post" class="form" id="form-2">
+                <h3 class="heading">Đăng Nhập</h3>
+                <p class="desc">Cùng nhau đọc sách nhé ❤️</p>
+                <div class="form-group">
+                    <lable class="form-lable">Email</lable>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="VD: email@domain.com.vm" />
+                    <span class="form-message"></span>
+                </div>
+                <div class="form-group">
+                    <lable class="form-lable">Mật khẩu</lable>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <span class="form-message"></span>
+                </div>
+                <button class="form-submit">Đăng nhập</button>
+            </form>
+        </div>
+        <script src="./assets/validatorlog.js"></script>
+        <script>
+            Validator({
+                form: "#form-2",
+                errorSelector: ".form-message",
+                rules: [
+                    Validator.isRequired("#email"),
+                    Validator.isEmail("#email"),
+                    Validator.isRequired("#password"),
+                    Validator.isMinlength("#password", 1),
+
+                ],
+                onSubmit: function (data) {
+                    var isacc = false;
+                    console.log(data);
+                    var accsApi = "  http://localhost:3000/accs";
+                    function start() {
+                        getAccs(renderAccs);
+                    }
+                    start();
+                    function getAccs(callback) {
+                        fetch(accsApi)
+                            .then(function (response) {
+                                return response.json();
+                            })
+                            .then(callback);
+                    }
+                    function renderAccs(listAccs) {
+                        console.log(listAccs);
+                        var listemail = listAccs.map(function (acc) {
+                            return acc.email;
+                        });
+                        var listpass = listAccs.map(function (acc) {
+                            return acc.password;
+                        });
+                        console.log(listemail);
+                        console.log(data.email);
+                        for (const email in listemail) {
+                            console.log(email);
+                            if (listemail[email] == data.email && listpass[email] == data.password ) {
+                                console.log("oke");
+                                isacc = true;
+                                break;
+                            }
+                        }
+                        if (isacc) {
+                            setTimeout(function () {
+                                alert("Đăng nhập thành công");
+                            }, 0);
+                            window.location.assign("http://127.0.0.1:5500/bookshop/index.html");
+                        } else {
+                            setTimeout(function () {
+                                alert("Email hoặc mật khẩu không chính xác.");
+                            }, 0);
+                        }
+                    }
+                },
+            });
+        </script>
+    </body>
+</html>

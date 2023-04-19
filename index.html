@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/bien.css" />
+        <link rel="stylesheet" href="./assets/css/base.css" />
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <link rel="stylesheet" href="./assets/showbook.js" />
+        <link rel="stylesheet" href="./assets/css/listbook.css" />
+        <link rel="stylesheet" href="./assets/css/search.css" />
+    </head>
+    <body class="home page-template-default page page-id-123 theme-bookworm woocommerce-js bookworm-page-template woocommerce-active">
+        <header id="header">
+            <div class="topbar__nav">
+                <ul class="header-nav">
+                    avata và giỏ hàng
+                </ul>
+            </div>
+            <div class="navbar">
+                <div>
+                    <div class="logo">logo</div>
+                    <div class="site-search">search box</div>
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search..." />
+                        <div id="suggestions-list"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row-list-book">
+                <h2>chọn thể loại</h2>
+                <div class="chooseCategory">
+                    <select id="selectBox">
+                        <option value="">-- Chọn thể loại --</option>
+                    </select>
+                    <button onclick="showBooks()">OK</button>
+                </div>
+                <h2>danh sách đã lọc</h2>
+                <div id="list-book"></div>
+            </div>
+        </div>
+    </body>
+    <script src="./assets/showbook.js"></script>
+    <script src="./assets/viewcategory.js"></script>
+    <script src="./assets/search.js"></script>
+    <script>
+        function showoptioncategory{
+        // Gửi yêu cầu đến API để lấy danh sách các thể loại sách
+        fetch("http://localhost:3000/categorys")
+            .then((response) => response.json())
+            .then((genres) => {
+                const selectBox = document.getElementById("selectBox");
+                genres.forEach((genre) => {
+                    const option = document.createElement("option");
+                    option.text = genre.name;
+                    option.value = genre.id;
+                    selectBox.add(option);
+                });
+            })
+            .catch((error) => console.error(error));
+        }
+    </script>
+</html>

@@ -1,0 +1,36 @@
+
+*{
+    box-sizing: inherit;
+}
+html{
+    font-size: 62.5%;
+    line-height: 16px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    color: black;
+    font-weight: 400;
+}
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.grid__full-width{
+    width: 100%;
+}
+.grid__row{
+    flex-wrap: wrap;
+}
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity:0 ;
+    }
+    to{
+        opacity: 1;
+    }
+}
+ul{
+    margin-top: 0px;
+    padding: 0px;
+}

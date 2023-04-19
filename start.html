@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sign In/Sign Up</title>
+        <link rel="stylesheet" href="./assets/css/start.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-container">
+                <h1>Hello</h1>
+                <div class="button-container">
+                    <button id="signin-btn">dang nhap</button>
+                    <button id="signup-btn">dang ki tk</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const signinBtn = document.getElementById("signin-btn");
+            const signupBtn = document.getElementById("signup-btn");
+            signinBtn.addEventListener("click", () => {
+                window.location.assign("http://127.0.0.1:5500/bookshop/signin.html");
+            });
+            signupBtn.addEventListener("click", () => {
+                window.location.assign("http://127.0.0.1:5500/bookshop/signup.html");
+            });
+        </script>
+    </body>
+</html>

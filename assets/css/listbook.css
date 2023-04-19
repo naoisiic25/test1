@@ -1,0 +1,37 @@
+#list-book{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: inter,Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #161619;
+    text-align: left;
+
+}
+#list-book img{
+    width: 120px;
+    height: 183px;
+    display: block;
+    margin: 10px auto;
+}
+#list-book li{
+    text-decoration: none;
+    list-style: none;
+    display: block;
+    width: 150px;
+}
+.book-item{
+    border: 1px solid #8c8f94;
+}
+.title-book{
+    width: auto;
+    display: block;
+    color: green;
+
+}
+/* .tool{
+    display: none;
+} */
